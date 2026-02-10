@@ -6,161 +6,279 @@
     <title>Defensa TIC - Much Flowers</title>
     <style>
         :root { --blue: #002d55; --yellow: #ffcc00; --white: #ffffff; }
-        body { margin: 0; font-family: 'Segoe UI', sans-serif; background: var(--blue); color: var(--white); font-size: 45px; overflow: hidden; }
-        .slide { height: 100vh; width: 100vw; display: none; flex-direction: column; justify-content: center; align-items: flex-start; padding: 40px 80px; box-sizing: border-box; }
+        
+        * { box-sizing: border-box; }
+        
+        body { 
+            margin: 0; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background: var(--blue); 
+            color: var(--white); 
+            font-size: 45px; 
+            overflow: hidden; 
+            height: 100vh;
+        }
+
+        /* Contenedor para que el contenido no choque con los botones */
+        .slide-container {
+            height: calc(100vh - 120px); 
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide { 
+            display: none; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: flex-start; 
+            padding: 40px 100px; 
+            width: 100%;
+            height: 100%;
+        }
+
         .active { display: flex; }
-        h1 { color: var(--yellow); font-size: 65px; margin-bottom: 25px; text-transform: uppercase; border-bottom: 5px solid var(--yellow); width: 100%; }
+
+        h1 { 
+            color: var(--yellow); 
+            font-size: 65px; 
+            margin-bottom: 25px; 
+            text-transform: uppercase; 
+            border-bottom: 5px solid var(--yellow); 
+            width: 100%; 
+            line-height: 1.1;
+        }
+
         .highlight { color: var(--yellow); font-weight: bold; }
-        .strategy-box { border-left: 8px solid var(--yellow); padding-left: 25px; margin-bottom: 25px; font-size: 35px; }
+
+        .strategy-box { 
+            border-left: 8px solid var(--yellow); 
+            padding-left: 25px; 
+            margin-bottom: 25px; 
+            font-size: 35px;
+            background: rgba(255,255,255,0.05);
+            width: 100%;
+        }
+
         .label { color: var(--yellow); font-weight: bold; text-transform: uppercase; font-size: 30px; display: block; }
-        .controls { position: fixed; bottom: 30px; right: 30px; display: flex; gap: 15px; }
-        button { background: var(--yellow); border: none; padding: 15px 25px; cursor: pointer; font-weight: bold; font-size: 20px; color: var(--blue); border-radius: 8px; }
-        p { margin: 10px 0; }
+
+        /* Barra de navegación optimizada para 16:10 */
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 120px;
+            background: rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 100px;
+            border-top: 2px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        button { 
+            background: var(--yellow); 
+            border: none; 
+            padding: 15px 40px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 28px; 
+            color: var(--blue); 
+            border-radius: 50px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+        }
+
+        button:hover { transform: translateY(-3px); background: #e6b800; }
+        button:active { transform: translateY(0); }
+        button:disabled { background: #555; cursor: not-allowed; opacity: 0.5; }
+
+        .slide-counter { font-size: 24px; color: var(--yellow); font-weight: bold; }
+
+        p { margin: 10px 0; line-height: 1.2; }
     </style>
 </head>
 <body>
 
-    <div class="slide active"> <h1 style="text-align:center; border:none; font-size:80px;">Much Flowers 🌹</h1>
-        <p style="width:100%; text-align:center;">Plan de Marketing y Comunicación Digital</p>
-        <p style="width:100%; text-align:center; font-size:45px; margin-top:40px;"><span class="highlight">Lucy Tatiana Tamayo Llanos</span></p>
-        <p style="width:100%; text-align:center; font-size:30px;">Directora: Sánchez Calle Laura Estefanía | 2026</p>
-    </div>
-
-    <div class="slide"> <h1>Introducción: El Sector 🌍</h1>
-        <p>🇪🇨 Ecuador: <span class="highlight">3er exportador mundial</span> de flores.</p>
-        <p>🏗️ Empresa: Produce <span class="highlight">10 millones de tallos</span> anuales.</p>
-        <p>💰 Facturación: USD 7 millones (últimos 3 años).</p>
-    </div>
-
-    <div class="slide"> <h1>Problemática ⚠️</h1>
-        <p>📉 <span class="highlight">Bajo engagement digital:</span> Falta de interacción con la audiencia.</p>
-        <p>❄️ Comunicación: Mensaje netamente racional y técnico.</p>
-        <p>🚫 Limitación: Incapacidad de crear <span class="highlight">conexión emocional</span>.</p>
-    </div>
-
-    <div class="slide"> <h1>Justificación ✨</h1>
-        <p>🚀 Consolidar el posicionamiento en <span class="highlight">EE.UU. y Canadá</span>.</p>
-        <p>🤝 Evolucionar hacia un mensaje emocional efectivo.</p>
-        <p>📊 Establecer <span class="highlight">KPIs</span> para medir resultados reales.</p>
-    </div>
-
-    <div class="slide"> <h1>Objetivo General 🎯</h1>
-        <p>Elaborar un plan de marketing y comunicación digital para optimizar la <span class="highlight">interacción y el alcance</span>, consolidando el posicionamiento internacional de Much Flowers.</p>
-    </div>
-
-    <div class="slide"> <h1>Objetivos Específicos 🔍</h1>
-        <p>1. <span class="highlight">Diagnosticar</span> la comunicación digital actual.</p>
-        <p>2. <span class="highlight">Analizar</span> conversión y realizar benchmarking.</p>
-        <p>3. <span class="highlight">Establecer</span> estrategia de ejecución y presupuesto.</p>
-    </div>
-
-    <div class="slide"> <h1>Metodología ⚙️</h1>
-        <p>🔄 <span class="highlight">Enfoque Mixto:</span> Integración cualitativa y cuantitativa.</p>
-        <p>📝 <span class="highlight">Cualitativo:</span> Entrevistas para significados subjetivos.</p>
-        <p>🔢 <span class="highlight">Cuantitativo:</span> Encuestas para detectar tendencias.</p>
-    </div>
-
-    <div class="slide"> <h1>Técnicas I 📋</h1>
-        <p>📂 <span class="highlight">Revisión Documental:</span> Información interna/externa.</p>
-        <p>👀 <span class="highlight">Observación Directa:</span> Comportamiento digital.</p>
-        <p>📊 <span class="highlight">Analítica Web:</span> Medición vía Fanpage Karma.</p>
-    </div>
-
-    <div class="slide"> <h1>Técnicas II 🛠️</h1>
-        <p>🕵️ <span class="highlight">Auditoría:</span> SEOquake y SEMrush (Competencia).</p>
-        <p>🎤 <span class="highlight">Entrevista:</span> Briefing con Dirección de Ventas.</p>
-        <p>👥 <span class="highlight">Censo:</span> 20 clientes clave en EE.UU. y Canadá.</p>
-    </div>
-
-    <div class="slide"> <h1>Diagnóstico 4Ps 💻</h1>
-        <p>📦 <span class="highlight">Producto:</span> Calidad premium, mensaje racional.</p>
-        <p>🚚 <span class="highlight">Plaza:</span> 89% satisfacción en proceso de compra.</p>
-        <p>📢 <span class="highlight">Promoción:</span> Engagement crítico del <span class="highlight">1.20%</span>.</p>
-    </div>
-
-    <div class="slide"> <h1>SEO y SEM 🌐</h1>
-        <p>🔝 <span class="highlight">Autoridad:</span> Superior a la competencia directa.</p>
-        <p>⚠️ <span class="highlight">Fallas:</span> Sin Google Analytics; etiqueta canónica errónea.</p>
-        <p>📉 Texto/HTML inferior al 15%: Falta contenido.</p>
-    </div>
-
-    <div class="slide"> <h1>Briefing Estratégico 📋</h1>
-        <p>💎 Marca: Exitosa comercialmente, pero "fría" digitalmente.</p>
-        <p>❤️ Meta: Evolucionar de marca racional a <span class="highlight">Lovemark</span>.</p>
-        <p>💵 Objetivo: Incrementar ventas en <span class="highlight">USD 500,000</span>.</p>
-    </div>
-
-    <div class="slide"> <h1>Público Objetivo 👥</h1>
-        <p>🏢 Segmento: <span class="highlight">Business to Business (B2B)</span>.</p>
-        <p>👩 Perfil: Mujeres (66.7%), 36-45 años, universitarias.</p>
-        <p>📍 Mercados: Mayoristas y supermercados internacionales.</p>
-    </div>
-
-    <div class="slide"> <h1>Buyer Persona 👤</h1>
-        <p><span class="highlight">Andrea "Andy" Johnson</span> (Gerente de Compras).</p>
-        <p>⚠️ <span class="highlight">Dolores:</span> Inestabilidad productiva y comunicación fría.</p>
-        <p>🏆 Metas: Asegurar calidad, durabilidad y logística fiable.</p>
-    </div>
-
-    <div class="slide"> <h1>Estrategia Creativa 🎨</h1>
-        <p style="font-size:55px; text-align:center;">"<span class="highlight">Cultivando Confianza, Entregando Certeza</span>"</p>
-        <p>Transformar a Much Flowers en un <span class="highlight">socio confiable</span> que elimina pesadillas logísticas.</p>
-    </div>
-
-    <div class="slide"> <h1>FODA: Fortalezas y Op. 💡</h1>
-        <p>✅ <span class="highlight">Fortalezas:</span> 10M tallos, solidez financiera, calidad.</p>
-        <p>💡 <span class="highlight">Oportunidades:</span> Diferenciación emocional y demanda de productos éticos/sostenibles.</p>
-    </div>
-
-    <div class="slide"> <h1>FODA: Debilidades y Am. 🚫</h1>
-        <p>⚠️ <span class="highlight">Debilidades:</span> Bajo engagement, inestabilidad productiva.</p>
-        <p>🚫 <span class="highlight">Amenazas:</span> Competencia global (Elite), cambio climático e incertidumbre en fletes.</p>
-    </div>
-
-    <div class="slide"> <h1>Plan de Acción I 🛠️</h1>
-        <div class="strategy-box">
-            <span class="label">E1. Contenido Emocional</span>
-            Acción: Storytelling semanal | Canal: <span class="highlight">IG/LinkedIn</span> | Indicador: <span class="highlight">Engagement 3%</span>
+    <div class="slide-container">
+        <div class="slide active"> 
+            <h1 style="text-align:center; border:none; font-size:80px;">Much Flowers 🌹</h1>
+            <p style="width:100%; text-align:center;">Plan de Marketing y Comunicación Digital</p>
+            <p style="width:100%; text-align:center; font-size:45px; margin-top:40px;"><span class="highlight">Lucy Tatiana Tamayo Llanos</span></p>
+            <p style="width:100%; text-align:center; font-size:30px;">Directora: Sánchez Calle Laura Estefanía | 2026</p>
         </div>
-        <div class="strategy-box">
-            <span class="label">E2. Fortalecimiento SEO</span>
-            Acción: Corrección técnica | Canal: <span class="highlight">Web</span> | Indicador: Alcance orgánico
+
+        <div class="slide"> <h1>Introducción: El Sector 🌍</h1>
+            <p>🇪🇨 Ecuador: <span class="highlight">3er exportador mundial</span> de flores.</p>
+            <p>🏗️ Empresa: Produce <span class="highlight">10 millones de tallos</span> anuales.</p>
+            <p>💰 Facturación: USD 7 millones (últimos 3 años).</p>
+        </div>
+
+        <div class="slide"> <h1>Problemática ⚠️</h1>
+            <p>📉 <span class="highlight">Bajo engagement digital:</span> Falta de interacción con la audiencia.</p>
+            <p>❄️ Comunicación: Mensaje netamente racional y técnico.</p>
+            <p>🚫 Limitación: Incapacidad de crear <span class="highlight">conexión emocional</span>.</p>
+        </div>
+
+        <div class="slide"> <h1>Justificación ✨</h1>
+            <p>🚀 Consolidar el posicionamiento en <span class="highlight">EE.UU. y Canadá</span>.</p>
+            <p>🤝 Evolucionar hacia un mensaje emocional efectivo.</p>
+            <p>📊 Establecer <span class="highlight">KPIs</span> para medir resultados reales.</p>
+        </div>
+
+        <div class="slide"> <h1>Objetivo General 🎯</h1>
+            <p>Elaborar un plan de marketing y comunicación digital para optimizar la <span class="highlight">interacción y el alcance</span>, consolidando el posicionamiento internacional de Much Flowers.</p>
+        </div>
+
+        <div class="slide"> <h1>Objetivos Específicos 🔍</h1>
+            <p>1. <span class="highlight">Diagnosticar</span> la comunicación digital actual.</p>
+            <p>2. <span class="highlight">Analizar</span> conversión y realizar benchmarking.</p>
+            <p>3. <span class="highlight">Establecer</span> estrategia de ejecución y presupuesto.</p>
+        </div>
+
+        <div class="slide"> <h1>Metodología ⚙️</h1>
+            <p>🔄 <span class="highlight">Enfoque Mixto:</span> Integración cualitativa y cuantitativa.</p>
+            <p>📝 <span class="highlight">Cualitativo:</span> Entrevistas para significados subjetivos.</p>
+            <p>🔢 <span class="highlight">Cuantitativo:</span> Encuestas para detectar tendencias.</p>
+        </div>
+
+        <div class="slide"> <h1>Técnicas I 📋</h1>
+            <p>📂 <span class="highlight">Revisión Documental:</span> Información interna/externa.</p>
+            <p>👀 <span class="highlight">Observación Directa:</span> Comportamiento digital.</p>
+            <p>📊 <span class="highlight">Analítica Web:</span> Medición vía Fanpage Karma.</p>
+        </div>
+
+        <div class="slide"> <h1>Técnicas II 🛠️</h1>
+            <p>🕵️ <span class="highlight">Auditoría:</span> SEOquake y SEMrush (Competencia).</p>
+            <p>🎤 <span class="highlight">Briefing:</span> Entrevista con Dirección de Ventas.</p>
+            <p>👥 <span class="highlight">Censo:</span> 20 clientes clave en EE.UU. y Canadá.</p>
+        </div>
+
+        <div class="slide"> <h1>Diagnóstico 4Ps 💻</h1>
+            <p>📦 <span class="highlight">Producto:</span> Calidad premium, mensaje racional.</p>
+            <p>🚚 <span class="highlight">Plaza:</span> 89% satisfacción en proceso de compra.</p>
+            <p>📢 <span class="highlight">Promoción:</span> Engagement crítico del <span class="highlight">1.20%</span>.</p>
+        </div>
+
+        <div class="slide"> <h1>SEO y SEM 🌐</h1>
+            <p>🔝 <span class="highlight">Autoridad:</span> Superior a la competencia directa.</p>
+            <p>⚠️ <span class="highlight">Fallas:</span> Sin Google Analytics; etiqueta canónica errónea.</p>
+            <p>📉 Texto/HTML inferior al 15%: Falta contenido.</p>
+        </div>
+
+        <div class="slide"> <h1>Briefing Estratégico 📋</h1>
+            <p>💎 Marca: Exitosa comercialmente, pero "fría" digitalmente.</p>
+            <p>❤️ Meta: Evolucionar de marca racional a <span class="highlight">Lovemark</span>.</p>
+            <p>💵 Objetivo: Incrementar ventas en <span class="highlight">USD 500,000</span>.</p>
+        </div>
+
+        <div class="slide"> <h1>Público Objetivo 👥</h1>
+            <p>🏢 Segmento: <span class="highlight">Business to Business (B2B)</span>.</p>
+            <p>👩 Perfil: Mujeres (66.7%), 36-45 años, universitarias.</p>
+            <p>📍 Mercados: Mayoristas y supermercados internacionales.</p>
+        </div>
+
+        <div class="slide"> <h1>Buyer Persona 👤</h1>
+            <p><span class="highlight">Andrea "Andy" Johnson</span> (Gerente de Compras).</p>
+            <p>⚠️ <span class="highlight">Dolores:</span> Inestabilidad productiva y comunicación fría.</p>
+            <p>🏆 Metas: Asegurar calidad, durabilidad y logística fiable.</p>
+        </div>
+
+        <div class="slide"> <h1>Estrategia Creativa 🎨</h1>
+            <p style="font-size:55px; text-align:center;">"<span class="highlight">Cultivando Confianza, Entregando Certeza</span>"</p>
+            <p>Transformar a Much Flowers en un <span class="highlight">socio confiable</span> que elimina pesadillas logísticas.</p>
+        </div>
+
+        <div class="slide"> <h1>FODA: Fortalezas y Op. 💡</h1>
+            <p>✅ <span class="highlight">Fortalezas:</span> 10M tallos, solidez financiera, calidad.</p>
+            <p>💡 <span class="highlight">Oportunidades:</span> Diferenciación emocional y demanda de productos éticos/sostenibles.</p>
+        </div>
+
+        <div class="slide"> <h1>FODA: Debilidades y Am. 🚫</h1>
+            <p>⚠️ <span class="highlight">Debilidades:</span> Bajo engagement, inestabilidad productiva.</p>
+            <p>🚫 <span class="highlight">Amenazas:</span> Competencia global (Elite), cambio climático e incertidumbre en fletes.</p>
+        </div>
+
+        <div class="slide"> <h1>Plan de Acción I 🛠️</h1>
+            <div class="strategy-box">
+                <span class="label">E1. Contenido Emocional</span>
+                Acción: Storytelling semanal | Canal: <span class="highlight">IG/LinkedIn</span> | Indicador: <span class="highlight">Engagement 3%</span>
+            </div>
+            <div class="strategy-box">
+                <span class="label">E2. Fortalecimiento SEO</span>
+                Acción: Corrección técnica | Canal: <span class="highlight">Web</span> | Indicador: Alcance orgánico
+            </div>
+        </div>
+
+        <div class="slide"> <h1>Plan de Acción II ⚙️</h1>
+            <div class="strategy-box">
+                <span class="label">E4. Lead Magnet y Email</span>
+                Acción: Catálogo interactivo | Canal: <span class="highlight">Email</span> | Indicador: Tasa de conversión
+            </div>
+            <div class="strategy-box">
+                <span class="label">E5. Publicidad (SEM)</span>
+                Acción: Campañas pagadas | Canal: <span class="highlight">Ads</span> | Indicador: <span class="highlight">Costo por Clic</span>
+            </div>
+        </div>
+
+        <div class="slide"> <h1>Conclusiones Finales 🎓</h1>
+            <p>🤝 Servicio al cliente: <span class="highlight">Factor #1</span> de compra (55.6%).</p>
+            <p>⚠️ Alerta: 44.4% de clientes reportó inconvenientes; urge <span class="highlight">mejorar postventa</span>.</p>
+            <p>📍 Omnicanalidad: WhatsApp, Email y Teams son vitales.</p>
+        </div>
+
+        <div class="slide"> <h1>Agradecimiento ✨</h1>
+            <p style="text-align:center;">Agradezco a Dios y la Universidad Particular de Loja  por guiarme al éxito profesional.</p>
+            <p style="text-align:center; color:var(--yellow); font-size:60px; margin-top:50px;">¡Muchas Gracias!</p>
         </div>
     </div>
 
-    <div class="slide"> <h1>Plan de Acción II ⚙️</h1>
-        <div class="strategy-box">
-            <span class="label">E4. Lead Magnet y Email</span>
-            Acción: Catálogo interactivo | Canal: <span class="highlight">Email</span> | Indicador: Tasa de conversión
-        </div>
-        <div class="strategy-box">
-            <span class="label">E5. Publicidad (SEM)</span>
-            Acción: Campañas pagadas | Canal: <span class="highlight">Ads</span> | Indicador: <span class="highlight">Costo por Clic</span>
-        </div>
-    </div>
-
-    <div class="slide"> <h1>Conclusiones Finales 🎓</h1>
-        <p>🤝 Servicio al cliente: <span class="highlight">Factor #1</span> de compra (55.6%).</p>
-        <p>⚠️ Alerta: 44.4% de clientes reportó inconvenientes; urge <span class="highlight">mejorar postventa</span>.</p>
-        <p>📍 Omnicanalidad: WhatsApp, Email y Teams son vitales.</p>
-    </div>
-
-    <div class="slide"> <h1>Agradecimiento ✨</h1>
-        <p style="text-align:center;"> Agradezco a Dios y a la Universidad Particular de Loja por guiarme al éxito profesional.</p>
-        <p style="text-align:center; color:var(--yellow); font-size:60px; margin-top:50px;">¡Muchas Gracias!</p>
-    </div>
-
-    <div class="controls">
-        <button onclick="prevSlide()">Anterior</button>
-        <button onclick="nextSlide()">Siguiente</button>
+    <div class="nav-bar">
+        <button id="prevBtn" onclick="prevSlide()">⇠ Anterior</button>
+        <div class="slide-counter" id="counter">1 / 21</div>
+        <button id="nextBtn" onclick="nextSlide()">Siguiente ⇢</button>
     </div>
 
     <script>
-        let current = 0; const slides = document.querySelectorAll('.slide');
-        function show(n) { slides[current].classList.remove('active'); current = (n + slides.length) % slides.length; slides[current].classList.add('active'); }
-        function nextSlide() { show(current + 1); } function prevSlide() { show(current - 1); }
-        document.addEventListener('keydown', (e) => { if(e.key === 'ArrowRight' || e.key === ' ') nextSlide(); if(e.key === 'ArrowLeft') prevSlide(); });
+        let current = 0; 
+        const slides = document.querySelectorAll('.slide');
+        const counter = document.getElementById('counter');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function updateUI() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === current);
+            });
+            counter.innerText = `${current + 1} / ${slides.length}`;
+            prevBtn.disabled = (current === 0);
+            nextBtn.disabled = (current === slides.length - 1);
+        }
+
+        function nextSlide() { 
+            if (current < slides.length - 1) {
+                current++; 
+                updateUI();
+            }
+        } 
+        
+        function prevSlide() { 
+            if (current > 0) {
+                current--; 
+                updateUI();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => { 
+            if (e.key === 'ArrowRight' || e.key === ' ') nextSlide(); 
+            if (e.key === 'ArrowLeft') prevSlide(); 
+        });
+
+        // Inicializar botones
+        updateUI();
     </script>
 </body>
 </html>
-
